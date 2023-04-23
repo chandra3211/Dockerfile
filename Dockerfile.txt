@@ -1,0 +1,6 @@
+FROM ubuntu
+RUN apt-get update && apt-get install nginx
+COPY /user/lib/test/index.html .
+WORKDIR /usr/lib/
+PORTS 8080
+CMD ['start' '-D' 'forground']
