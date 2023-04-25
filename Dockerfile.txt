@@ -2,7 +2,7 @@ FROM ubuntu:latest
 RUN apt-get update && apt-get install nginx
 COPY nginx.conf /etc/nginx/conf.d
 VOLUME myvolume1
-WORKDIR /usr/lib/
+WORKDIR /opt
 EXPOSE 8080
 CMD ['nginx' '-D' 'forground']
 
