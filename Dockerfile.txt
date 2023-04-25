@@ -1,6 +1,13 @@
-FROM ubuntu
+FROM ubuntu:latest
 RUN apt-get update && apt-get install nginx
-COPY /user/lib/test/index.html .
+COPY nginx.conf /etc/nginx/conf.d
+VOLUME myvolume1
 WORKDIR /usr/lib/
-PORTS 8080
-CMD ['start' '-D' 'forground']
+EXPOSE 8080
+CMD ['nginx' '-D' 'forground']
+
+#to build docker image
+$docker build -t nginx:1.10 .
+
+#to create docker container
+$docker run -d -p 8080:8080 --name ingnginx nginx:1.10
